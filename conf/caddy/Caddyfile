@@ -1,0 +1,17 @@
+www.deaf-mutes.us {
+  tls geektheripper@gmail.com
+  redir https://deaf-mutes.us{uri}
+}
+
+deaf-mutes.us {
+  tls geektheripper@gmail.com
+  proxy / ssmgr:80 {
+    transparent
+    websocket
+    header_upstream Sec-Websocket-Key {>Sec-Websocket-Key}
+    header_upstream Sec-Websocket-Extensions {>Sec-Websocket-Extensions}
+    header_upstream Sec-Websocket-Version {>Sec-Websocket-Version}
+  }
+
+  log /logs/deaf-mutes.us-access.log
+}

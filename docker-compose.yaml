@@ -1,0 +1,20 @@
+version: '3'
+services:
+  caddy:
+    image: abiosoft/caddy
+    restart: always
+    environment:
+      - ACME_AGREE=true
+    volumes:
+      - "$service_dir/conf/caddy/Caddyfile:/etc/Caddyfile:ro"
+      - "$data_dir/caddy-logs:/logs:rw"
+    ports:
+      - "80:80"
+      - "443:443"
+    stdin_open: true
+    tty: true
+  ssmgr:
+    image: gyteng/ssmgr
+    restart: always
+    volumes:
+      - "$secrets_dir/ssmgr/webgui.yml:/root/.ssmgr/default.yml:ro"
