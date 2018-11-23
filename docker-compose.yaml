@@ -19,7 +19,8 @@ services:
     env_file:
       - "$secrets_dir/secrets.env"
     volumes:
-      - "$service_dir/conf/ssmgr/config.js:/usr/lib/node_modules/shadowsocks-manager/lib/services/config.js"
+      - "$service_dir/conf/ssmgr/config.js:/usr/local/share/.config/yarn/global/node_modules/shadowsocks-manager/services/config.js"
+      - "$service_dir/conf/ssmgr/skin/fs_laughingman.html:/usr/local/share/.config/yarn/global/node_modules/shadowsocks-manager/plugins/webgui/public/views/skin/fs_laughingman.html"
       - "$service_dir/conf/ssmgr/favicon.png:/favicon.png"
   mysql:
     image: mysql:5
@@ -28,10 +29,10 @@ services:
       - "$secrets_dir/secrets.env"
     command: --sql_mode=""
     volumes:
-      - mysql-data
+      - "mysql-data:/var/lib/mysql"
     ports:
       - "3306:3306"
     restart: always
 
 volumes: 
-  - mysql-data:
+  mysql-data:
