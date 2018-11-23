@@ -14,7 +14,24 @@ services:
     stdin_open: true
     tty: true
   ssmgr:
-    image: gyteng/ssmgr
+    image: geektr/ssmgr
     restart: always
+    env_file:
+      - "$secrets_dir/secrets.env"
     volumes:
-      - "$secrets_dir/ssmgr/webgui.yml:/root/.ssmgr/default.yml:ro"
+      - "$service_dir/conf/ssmgr/config.js:/usr/lib/node_modules/shadowsocks-manager/lib/services/config.js"
+      - "$service_dir/conf/ssmgr/favicon.png:/favicon.png"
+  mysql:
+    image: mysql:5
+    restart: always
+    env_file: 
+      - "$secrets_dir/secrets.env"
+    command: --sql_mode=""
+    volumes:
+      - mysql-data
+    ports:
+      - "3306:3306"
+    restart: always
+
+volumes: 
+  - mysql-data:
