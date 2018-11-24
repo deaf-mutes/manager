@@ -18,9 +18,20 @@ deployer up deaf-mutes/manager
 ```
 
 ## Mysql Backup & Restore
+
 ```bash
 # backup
 docker-compose exec mysql /usr/bin/mysqldump -u root --password=password shadowsocks > backup.sql
 # restore
 cat backup.sql | docker exec -i manager_mysql_1 /usr/bin/mysql -u root --password=justatest shadowsocks
+```
+
+## Aliyun CDN Deploy
+
+```bash
+# source <(wget -qO- http://mu.geektr.me/installs/aliyun.sh) && mu_installs::aliyun::ossutil
+# ossutil config
+
+./deploy-webgui.sh
+./deploy-help.sh
 ```
