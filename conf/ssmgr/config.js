@@ -3,10 +3,10 @@ const set = require('lodash/set')
 
 const config = {
   type: "m",
-  // manager: {
-  //   address: "la-01.deaf-mutes.us:4001",
-  //   password: process.env.MANAGER_PASSWORD,
-  // },
+  manager: {
+    address: "la-01.deaf-mutes.us:4001",
+    password: process.env.SLAVE_PASSWORD,
+  },
   plugins: {
     flowSaver: { use: true },
     user: { use: true },

@@ -22,5 +22,5 @@ deployer up deaf-mutes/manager
 # backup
 docker-compose exec mysql /usr/bin/mysqldump -u root --password=password shadowsocks > backup.sql
 # restore
-cat backup.sql | docker-compose exec -i mysql /usr/bin/mysql -u root --password=password shadowsocks
+cat backup.sql | docker exec -i manager_mysql_1 /usr/bin/mysql -u root --password=justatest shadowsocks
 ```
