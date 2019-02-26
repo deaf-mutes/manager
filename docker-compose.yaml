@@ -15,6 +15,9 @@ services:
     tty: true
   ssmgr:
     image: geektr/ssmgr
+    depends_on:
+      - mysql
+      - redis
     restart: always
     env_file:
       - "$secrets_dir/secrets.env"
