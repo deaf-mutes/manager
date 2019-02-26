@@ -23,7 +23,7 @@ const config = {
       use: true,
       host: "0.0.0.0",
       port: "80",
-      site: "http://ssmgr",
+      site: "https://deaf-mutes.us",
       icon: "/favicon.png",
       skin: "fs_laughingman",
       cdn: "https://deaf-mutes.oss-cn-shanghai.aliyuncs.com",
@@ -35,6 +35,12 @@ const config = {
     user: "root",
     password: process.env.MYSQL_ROOT_PASSWORD,
     database: "shadowsocks"
+  },
+  redis: {
+    host: "redis",
+    port: 6379,
+    password: "",
+    db: 0,
   }
 }
 

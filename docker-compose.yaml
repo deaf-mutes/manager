@@ -31,6 +31,11 @@ services:
     volumes:
       - "mysql-data:/var/lib/mysql"
     restart: always
+  redis:
+    image: redis
+    volumes:
+      - "redis-data:/data"
 
 volumes: 
   mysql-data:
+  redis-data:
